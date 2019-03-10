@@ -1,0 +1,18 @@
+[Unit]
+Description=Erlang MQTT Broker Service
+After=network.target
+
+[Service]
+User=ff
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/home/ff/emqtt/emqttd/rel/emqttd
+ExecStart=/home/ff/emqtt/emqttd/rel/emqttd/bin/emqttd start
+ExecStop=/home/ff/emqtt/emqttd/rel/emqttd/bin/emqttd stop
+StandardOutput=null
+Restart=no
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+Alias=emqttd.service
